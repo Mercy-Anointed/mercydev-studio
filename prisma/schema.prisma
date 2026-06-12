@@ -1,0 +1,95 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  password  String
+  role      Role     @default(VISITOR)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  messages        Message[]
+  contactRequests ContactRequest[]
+
+  @@map("users")
+}
+
+enum Role {
+  ADMIN
+  VISITOR
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  techStack   String[]
+  imageUrl    String
+  githubUrl   String?
+  liveUrl     String?
+  category    String
+  featured    Boolean  @default(false)
+  published   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("projects")
+}
+
+model ContactRequest {
+  id        String        @id @default(cuid())
+  name      String
+  email     String
+  service   String
+  message   String
+  status    RequestStatus @default(UNREAD)
+  createdAt DateTime      @default(now())
+
+  userId String?
+  user   User?   @relation(fields: [userId], references: [id])
+
+  @@map("contact_requests")
+}
+
+enum RequestStatus {
+  UNREAD
+  READ
+  REPLIED
+}
+
+model Message {
+  id        String   @id @default(cuid())
+  content   String
+  isFromAdmin Boolean @default(false)
+  seen      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  senderId String
+  sender   User   @relation(fields: [senderId], references: [id])
+
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id])
+
+  @@map("messages")
+}
+
+model Conversation {
+  id           String   @id @default(cuid())
+  visitorName  String
+  visitorEmail String
+  resolved     Boolean  @default(false)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  messages Message[]
+
+  @@map("conversations")
+}
