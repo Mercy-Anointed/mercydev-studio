@@ -1,11 +1,19 @@
 import { db } from '@/lib/db'
 
 export default async function Portfolio() {
-  const projects = await db.project.findMany({
-    where: { published: true },
-    orderBy: [{ featured: 'desc' }, { createdAt: 'desc' }],
-    take: 6,
-  })
+  let projects: Awaited<ReturnType<typeof db.project.findMany>> = []
+  let loadError = false
+
+  try {
+    projects = await db.project.findMany({
+      where: { published: true },
+      orderBy: [{ featured: 'desc' }, { createdAt: 'desc' }],
+      take: 6,
+    })
+  } catch (error) {
+    loadError = true
+    console.error('Failed to load portfolio projects', error)
+  }
 
   return (
     <section id="portfolio" style={{ padding: '6rem 2rem' }}>
@@ -23,7 +31,18 @@ export default async function Portfolio() {
           A selection of recent projects - real work for real clients.
         </p>
 
-        {projects.length === 0 ? (
+        {loadError ? (
+          <div style={{
+            background: 'var(--surface)',
+            border: '1px solid var(--border)',
+            borderRadius: '8px',
+            padding: '2rem',
+            marginTop: '3.5rem',
+            color: 'var(--text2)',
+          }}>
+            The portfolio is temporarily unavailable while the project database is unreachable. Please check back soon.
+          </div>
+        ) : projects.length === 0 ? (
           <div style={{
             background: 'var(--surface)',
             border: '1px solid var(--border)',
