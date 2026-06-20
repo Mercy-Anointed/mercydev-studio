@@ -20,14 +20,14 @@ export default async function Portfolio() {
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
         <span className="section-tag">Portfolio</span>
         <h2 style={{
-          fontSize: 'clamp(1.8rem, 4vw, 2.8rem)',
+          fontSize: 'clamp(2rem, 4vw, 3.2rem)',
           fontWeight: 800,
           lineHeight: 1.15,
           marginBottom: '1rem',
         }}>
           Things I&apos;ve built.
         </h2>
-        <p style={{ color: 'var(--text2)', maxWidth: '560px', fontSize: '1rem', fontWeight: 300 }}>
+        <p style={{ color: 'var(--text2)', maxWidth: '560px', fontSize: '1rem', fontWeight: 400, lineHeight: 1.75 }}>
           A selection of recent projects - real work for real clients.
         </p>
 
@@ -132,7 +132,7 @@ function ProjectCard({ title, description, tech, imageUrl, liveUrl, githubUrl, f
             background: 'var(--teal)',
             color: '#0a0a0f',
             fontSize: '0.7rem',
-            fontFamily: 'Syne, sans-serif',
+            fontFamily: 'Space Grotesk, sans-serif',
             fontWeight: 700,
             padding: '0.2rem 0.6rem',
             borderRadius: '999px',
@@ -144,7 +144,7 @@ function ProjectCard({ title, description, tech, imageUrl, liveUrl, githubUrl, f
 
       <div style={{ padding: '1.2rem' }}>
         <h3 style={{ fontSize: '0.98rem', fontWeight: 700, marginBottom: '0.4rem' }}>{title}</h3>
-        <p style={{ color: 'var(--text2)', fontSize: '0.82rem', fontWeight: 300, lineHeight: 1.5, marginBottom: '0.8rem' }}>
+        <p style={{ color: 'var(--text2)', fontSize: '0.86rem', fontWeight: 400, lineHeight: 1.65, marginBottom: '0.8rem' }}>
           {description}
         </p>
         <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>

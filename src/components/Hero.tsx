@@ -46,7 +46,8 @@ export default function Hero() {
               background: 'var(--teal-dim)',
               border: '1px solid rgba(0,229,195,0.2)',
               padding: '0.4rem 0.9rem', borderRadius: '100px',
-              fontSize: '0.8rem', color: 'var(--teal)', fontWeight: 500,
+              fontSize: '0.78rem', color: 'var(--teal)', fontWeight: 600,
+              fontFamily: 'Space Grotesk, sans-serif',
               marginBottom: '1.5rem',
             }}
           >
@@ -60,7 +61,7 @@ export default function Hero() {
           {/* Headline */}
           <h1
             className="animate-fade-up delay-200"
-            style={{ fontSize: 'clamp(2.4rem, 5vw, 3.8rem)', fontWeight: 800, lineHeight: 1.1, letterSpacing: '-0.03em', marginBottom: '1.5rem' }}
+            style={{ fontSize: 'clamp(2.8rem, 5vw, 4.4rem)', fontWeight: 800, lineHeight: 1.02, letterSpacing: '-0.05em', marginBottom: '1.5rem' }}
           >
             I build things
             <br />
@@ -79,7 +80,7 @@ export default function Hero() {
           {/* Subheading */}
           <p
             className="animate-fade-up delay-300"
-            style={{ color: 'var(--text2)', fontSize: '1.05rem', maxWidth: '480px', marginBottom: '2.5rem', fontWeight: 300 }}
+            style={{ color: 'var(--text2)', fontSize: '1rem', maxWidth: '520px', marginBottom: '2.5rem', fontWeight: 400, lineHeight: 1.75 }}
           >
             Fullstack developer &amp; digital craftsperson. I turn your ideas into fast, beautiful web experiences that actually convert.
           </p>
@@ -116,13 +117,13 @@ export default function Hero() {
             <span style={{ width: '11px', height: '11px', borderRadius: '50%', background: '#ff5f57', display: 'inline-block' }} />
             <span style={{ width: '11px', height: '11px', borderRadius: '50%', background: '#ffbd2e', display: 'inline-block' }} />
             <span style={{ width: '11px', height: '11px', borderRadius: '50%', background: '#27c93f', display: 'inline-block' }} />
-            <span style={{ marginLeft: '0.5rem', fontSize: '0.75rem', color: 'var(--text3)', fontFamily: 'DM Sans, sans-serif' }}>
+            <span style={{ marginLeft: '0.5rem', fontSize: '0.75rem', color: 'var(--text3)', fontFamily: 'Inter, sans-serif' }}>
               <span style={{ color: 'var(--teal)', fontWeight: 500 }}>mercy-dev</span>/studio.ts
             </span>
           </div>
 
           {/* Code */}
-          <div style={{ padding: '1.5rem', fontFamily: 'DM Sans, monospace', fontSize: '0.82rem', lineHeight: 2 }}>
+          <div style={{ padding: '1.5rem', fontFamily: 'Inter, monospace', fontSize: '0.84rem', lineHeight: 1.9 }}>
             {[
               { c: '#546e7a', t: '// who I am', italic: true },
               { t: <><span style={{ color: '#c792ea' }}>const</span> <span style={{ color: '#82aaff' }}>developer</span> = {'{'}</> },
@@ -150,8 +151,8 @@ export default function Hero() {
                 padding: '1rem', textAlign: 'center',
                 borderRight: label !== 'Yrs exp' ? '1px solid var(--border)' : 'none',
               }}>
-                <div style={{ fontFamily: 'Syne, sans-serif', fontSize: '1.4rem', fontWeight: 800, color: 'var(--teal)' }}>{num}</div>
-                <div style={{ fontSize: '0.72rem', color: 'var(--text3)', marginTop: '0.1rem' }}>{label}</div>
+                <div style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '1.35rem', fontWeight: 800, color: 'var(--teal)' }}>{num}</div>
+                <div style={{ fontSize: '0.74rem', color: 'var(--text3)', marginTop: '0.2rem', letterSpacing: '0.02em' }}>{label}</div>
               </div>
             ))}
           </div>

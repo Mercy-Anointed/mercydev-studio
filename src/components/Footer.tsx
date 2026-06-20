@@ -15,7 +15,7 @@ export default function Footer() {
       padding: '3rem 2rem',
       textAlign: 'center',
     }}>
-      <div style={{ fontFamily: 'Syne, sans-serif', fontSize: '1.3rem', fontWeight: 800, marginBottom: '0.5rem' }}>
+      <div style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '1.2rem', fontWeight: 800, marginBottom: '0.5rem', letterSpacing: '-0.04em' }}>
         Mercy<span style={{ color: 'var(--teal)' }}>.</span>Dev Studio
       </div>
 

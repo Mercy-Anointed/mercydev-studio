@@ -47,7 +47,7 @@ export default function Services() {
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
         <span className="section-tag">What I do</span>
         <h2 style={{
-          fontSize: 'clamp(1.8rem, 4vw, 2.8rem)',
+          fontSize: 'clamp(2rem, 4vw, 3.2rem)',
           fontWeight: 800,
           letterSpacing: '-0.02em',
           lineHeight: 1.15,
@@ -55,7 +55,7 @@ export default function Services() {
         }}>
           Services built<br />for real results.
         </h2>
-        <p style={{ color: 'var(--text2)', maxWidth: '560px', fontSize: '1rem', fontWeight: 300 }}>
+        <p style={{ color: 'var(--text2)', maxWidth: '560px', fontSize: '1rem', fontWeight: 400, lineHeight: 1.75 }}>
           Whether you need a landing page or a full-blown platform, I&apos;ve got you covered end-to-end.
         </p>
 
@@ -121,9 +121,9 @@ function ServiceCard({ icon, title, description, price }: {
         {icon}
       </div>
 
-      <h3 style={{ fontSize: '1.05rem', fontWeight: 700, marginBottom: '0.5rem' }}>{title}</h3>
-      <p style={{ color: 'var(--text2)', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.6 }}>{description}</p>
-      <div style={{ marginTop: '1rem', fontSize: '0.75rem', color: 'var(--teal)', fontWeight: 500 }}>
+      <h3 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.5rem', letterSpacing: '-0.02em' }}>{title}</h3>
+      <p style={{ color: 'var(--text2)', fontSize: '0.92rem', fontWeight: 400, lineHeight: 1.65 }}>{description}</p>
+      <div style={{ marginTop: '1rem', fontSize: '0.78rem', color: 'var(--teal)', fontWeight: 600 }}>
         → {price}
       </div>
 

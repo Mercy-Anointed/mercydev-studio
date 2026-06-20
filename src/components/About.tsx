@@ -49,8 +49,8 @@ export default function About() {
             }}>
               {/* Replace this div with an <Image /> component when you have a photo */}
               <div style={{
-                fontFamily: 'Syne, sans-serif',
-                fontSize: '5rem',
+                fontFamily: 'Space Grotesk, sans-serif',
+                fontSize: '4.6rem',
                 fontWeight: 800,
                 color: 'var(--teal)',
                 opacity: 0.15,
@@ -68,7 +68,7 @@ export default function About() {
                 padding: '0.6rem 1rem',
                 borderRadius: '8px',
                 fontSize: '0.82rem',
-                fontFamily: 'Syne, sans-serif',
+                fontFamily: 'Space Grotesk, sans-serif',
                 fontWeight: 700,
               }}>
                 Lagos, Nigeria &nbsp;|&nbsp; <span style={{ color: 'var(--teal)' }}>Open to remote</span>
@@ -79,7 +79,7 @@ export default function About() {
           {/* Right — text */}
           <div>
             <h2 style={{
-              fontSize: 'clamp(1.8rem, 4vw, 2.8rem)',
+              fontSize: 'clamp(2rem, 4vw, 3.2rem)',
               fontWeight: 800,
               letterSpacing: '-0.02em',
               lineHeight: 1.15,
@@ -88,11 +88,11 @@ export default function About() {
               Passionate builder,<br />warm human.
             </h2>
 
-            <p style={{ color: 'var(--text2)', fontWeight: 300, marginBottom: '1rem' }}>
+            <p style={{ color: 'var(--text2)', fontWeight: 400, lineHeight: 1.75, marginBottom: '1rem' }}>
               I&apos;m a fullstack developer based in Lagos with a love for building things that feel just right. Not just functional — but genuinely enjoyable to use.
             </p>
 
-            <p style={{ color: 'var(--text2)', fontWeight: 300, marginBottom: '1.5rem' }}>
+            <p style={{ color: 'var(--text2)', fontWeight: 400, lineHeight: 1.75, marginBottom: '1.5rem' }}>
               From small business websites to complex web apps, I bring both technical precision and creative energy to every project. When I&apos;m not coding, I&apos;m probably thinking about better ways to do it.
             </p>
 

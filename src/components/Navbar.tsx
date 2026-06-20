@@ -22,7 +22,7 @@ export default function Navbar() {
       }}
     >
       {/* Logo */}
-      <Link href="/" style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: '1.1rem', color: 'var(--text)', letterSpacing: '-0.02em', textDecoration: 'none' }}>
+      <Link href="/" style={{ fontFamily: 'Space Grotesk, sans-serif', fontWeight: 800, fontSize: '1.05rem', color: 'var(--text)', letterSpacing: '-0.04em', textDecoration: 'none' }}>
         Mercy<span style={{ color: 'var(--teal)' }}>.</span>Dev
       </Link>
 

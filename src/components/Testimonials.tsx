@@ -33,7 +33,7 @@ export default function Testimonials() {
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
         <span className="section-tag">Testimonials</span>
         <h2 style={{
-          fontSize: 'clamp(1.8rem, 4vw, 2.8rem)',
+          fontSize: 'clamp(2rem, 4vw, 3.2rem)',
           fontWeight: 800,
           letterSpacing: '-0.02em',
           lineHeight: 1.15,
@@ -68,8 +68,8 @@ export default function Testimonials() {
               {/* Quote */}
               <p style={{
                 color: 'var(--text2)',
-                fontSize: '0.9rem',
-                fontWeight: 300,
+                fontSize: '0.92rem',
+                fontWeight: 400,
                 lineHeight: 1.7,
                 fontStyle: 'italic',
                 marginBottom: '1.2rem',
@@ -88,8 +88,8 @@ export default function Testimonials() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontFamily: 'Syne, sans-serif',
-                  fontSize: '0.85rem',
+                  fontFamily: 'Space Grotesk, sans-serif',
+                  fontSize: '0.88rem',
                   fontWeight: 700,
                   color: 'var(--teal)',
                   flexShrink: 0,
@@ -97,7 +97,7 @@ export default function Testimonials() {
                   {t.initials}
                 </div>
                 <div>
-                  <div style={{ fontFamily: 'Syne, sans-serif', fontSize: '0.88rem', fontWeight: 700 }}>{t.name}</div>
+                  <div style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '0.9rem', fontWeight: 700, letterSpacing: '-0.02em' }}>{t.name}</div>
                   <div style={{ fontSize: '0.75rem', color: 'var(--text3)' }}>{t.role}</div>
                 </div>
               </div>
