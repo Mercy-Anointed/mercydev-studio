@@ -63,9 +63,10 @@ export default async function Portfolio() {
               marginTop: '3.5rem',
             }}
           >
-            {projects.map(project => (
+            {projects.map((project, index) => (
               <ProjectCard
                 key={project.id}
+                index={index}
                 title={project.title}
                 description={project.description}
                 tech={project.techStack}
@@ -95,7 +96,8 @@ export default async function Portfolio() {
   )
 }
 
-function ProjectCard({ title, description, tech, imageUrl, liveUrl, githubUrl, featured }: {
+function ProjectCard({ index, title, description, tech, imageUrl, liveUrl, githubUrl, featured }: {
+  index: number
   title: string
   description: string
   tech: string[]
@@ -106,13 +108,14 @@ function ProjectCard({ title, description, tech, imageUrl, liveUrl, githubUrl, f
 }) {
   return (
     <article
-      className="project-card-hover"
+      className="project-card-hover motion-card"
       style={{
         background: 'var(--surface)',
         border: '1px solid var(--border)',
         borderRadius: '8px',
         overflow: 'hidden',
         transition: 'all 0.3s',
+        animationDelay: `${index * 80}ms`,
       }}
     >
       <div style={{
@@ -120,9 +123,9 @@ function ProjectCard({ title, description, tech, imageUrl, liveUrl, githubUrl, f
         background: 'var(--bg3)',
         position: 'relative',
         overflow: 'hidden',
-      }}>
+        }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={imageUrl} alt={title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        <img src={imageUrl} alt={title} className="motion-card-media" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
 
         {featured && (
           <span style={{
@@ -185,7 +188,6 @@ function ProjectCard({ title, description, tech, imageUrl, liveUrl, githubUrl, f
 
       <style>{`
         .project-card-hover:hover {
-          transform: translateY(-5px);
           border-color: var(--border2) !important;
         }
         .project-link-style:hover { color: var(--teal) !important; }

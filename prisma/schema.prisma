@@ -45,6 +45,25 @@ model Project {
   @@map("projects")
 }
 
+model Testimonial {
+  id        String            @id @default(cuid())
+  name      String
+  role      String
+  rating    Int
+  content   String
+  published Boolean           @default(false)
+  source    TestimonialSource  @default(PUBLIC)
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt
+
+  @@map("testimonials")
+}
+
+enum TestimonialSource {
+  ADMIN
+  PUBLIC
+}
+
 model ContactRequest {
   id        String        @id @default(cuid())
   name      String

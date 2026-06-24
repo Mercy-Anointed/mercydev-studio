@@ -69,6 +69,51 @@ async function main() {
   }
 
   console.log(`${projects.length} projects seeded`)
+
+  const testimonials = [
+    {
+      name: 'Adaeze K.',
+      role: 'CEO, ShopNaija',
+      rating: 5,
+      content:
+        'Mercy built our entire e-commerce store in under 3 weeks. The attention to detail was something else - every screen felt thought-out. Our sales doubled in the first month.',
+      published: true,
+      source: 'PUBLIC' as const,
+    },
+    {
+      name: 'Tunde O.',
+      role: 'Founder, GrowthNow',
+      rating: 5,
+      content:
+        'I needed a landing page fast. Not only was it delivered quickly, it actually converted - we went from 2% to 11% conversion rate. I am still shocked.',
+      published: true,
+      source: 'PUBLIC' as const,
+    },
+    {
+      name: 'Blessing I.',
+      role: 'Fitness Coach',
+      rating: 5,
+      content:
+        'The whole vibe was professional but also really warm - like working with someone who genuinely cares. My booking platform works flawlessly.',
+      published: true,
+      source: 'PUBLIC' as const,
+    },
+    {
+      name: 'Chukwuemeka U.',
+      role: 'CTO, LagosTech',
+      rating: 5,
+      content:
+        'We had a complex brief - multiple user roles, real-time features, payments. Mercy handled it all without making us feel confused. Highly recommend.',
+      published: true,
+      source: 'PUBLIC' as const,
+    },
+  ]
+
+  for (const testimonial of testimonials) {
+    await prisma.testimonial.create({ data: testimonial })
+  }
+
+  console.log(`${testimonials.length} testimonials seeded`)
   console.log('Database seeded successfully!')
 }
 

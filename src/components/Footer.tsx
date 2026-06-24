@@ -1,4 +1,5 @@
-"use client";
+"use client"
+
 const links = [
   { href: '#home', label: 'Home' },
   { href: '#about', label: 'About' },
@@ -19,7 +20,7 @@ export default function Footer() {
         Mercy<span style={{ color: 'var(--teal)' }}>.</span>Dev Studio
       </div>
 
-      <ul style={{ display: 'flex', justifyContent: 'center', gap: '2rem', listStyle: 'none', margin: '1.2rem 0' }}>
+      <ul style={{ display: 'flex', justifyContent: 'center', gap: '2rem', listStyle: 'none', margin: '1.2rem 0', padding: 0, flexWrap: 'wrap' }}>
         {links.map(link => (
           <li key={link.href}>
             <a
@@ -35,8 +36,9 @@ export default function Footer() {
       </ul>
 
       <p style={{ color: 'var(--text3)', fontSize: '0.85rem' }}>
-        © {new Date().getFullYear()} Mercy Dev Studio · Built with care in Lagos, Nigeria 🇳🇬
+        © {new Date().getFullYear()} Mercy Dev Studio · Port Harcourt, Nigeria 🇳🇬
       </p>
+
     </footer>
   )
 }

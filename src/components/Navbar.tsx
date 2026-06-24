@@ -3,7 +3,6 @@
 import Link from 'next/link'
 
 export default function Navbar() {
-
   return (
     <nav
       style={{
@@ -21,12 +20,10 @@ export default function Navbar() {
         borderBottom: '1px solid var(--border)',
       }}
     >
-      {/* Logo */}
       <Link href="/" style={{ fontFamily: 'Space Grotesk, sans-serif', fontWeight: 800, fontSize: '1.05rem', color: 'var(--text)', letterSpacing: '-0.04em', textDecoration: 'none' }}>
         Mercy<span style={{ color: 'var(--teal)' }}>.</span>Dev
       </Link>
 
-      {/* Desktop links */}
       <ul style={{ display: 'flex', gap: '2rem', listStyle: 'none' }} className="nav-links-desktop">
         {[['#about', 'About'], ['#services', 'Services'], ['#portfolio', 'Work'], ['#testimonials', 'Reviews'], ['#contact', 'Contact']].map(([href, label]) => (
           <li key={href}>
@@ -42,9 +39,8 @@ export default function Navbar() {
         ))}
       </ul>
 
-      {/* CTA */}
       <a href="#contact" className="btn-primary" style={{ padding: '0.5rem 1.2rem', fontSize: '0.85rem' }}>
-        Hire Me →
+        Connect →
       </a>
 
       <style>{`

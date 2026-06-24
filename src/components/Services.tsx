@@ -16,25 +16,25 @@ const services = [
     icon: '🎨',
     title: 'UI/UX Design',
     description: 'Beautiful, user-centered interfaces that feel intuitive and build trust with your audience.',
-    price: 'From ₦80,000',
+    price: 'Custom quote',
   },
   {
     icon: '✦',
     title: 'Brand Design',
     description: 'Logo, colors, typography, and visual identity — everything you need to look professional.',
-    price: 'From ₦60,000',
+    price: 'Custom quote',
   },
   {
-    icon: '🤖',
-    title: 'AI Automation',
-    description: 'Integrate AI tools and automations into your workflow to save time and scale smarter.',
+    icon: '🎨',
+    title: 'Graphic Design',
+    description: 'Posters, social media graphics, flyers, banners, and polished visual content for your brand.',
     price: 'Custom quote',
   },
   {
     icon: '📱',
     title: 'Landing Pages',
     description: 'High-converting landing pages designed specifically to capture leads and drive action.',
-    price: 'From ₦50,000',
+    price: 'From ₦80,000',
   },
 ]
 
@@ -68,8 +68,8 @@ export default function Services() {
           }}
           className="services-grid"
         >
-          {services.map((service) => (
-            <ServiceCard key={service.title} {...service} />
+          {services.map((service, index) => (
+            <ServiceCard key={service.title} index={index} {...service} />
           ))}
         </div>
       </div>
@@ -86,7 +86,8 @@ export default function Services() {
   )
 }
 
-function ServiceCard({ icon, title, description, price }: {
+function ServiceCard({ index, icon, title, description, price }: {
+  index: number
   icon: string
   title: string
   description: string
@@ -94,7 +95,7 @@ function ServiceCard({ icon, title, description, price }: {
 }) {
   return (
     <div
-      className="service-card-hover"
+      className="service-card-hover motion-card"
       style={{
         background: 'var(--surface)',
         border: '1px solid var(--border)',
@@ -104,6 +105,7 @@ function ServiceCard({ icon, title, description, price }: {
         overflow: 'hidden',
         cursor: 'pointer',
         transition: 'all 0.3s',
+        animationDelay: `${index * 80}ms`,
       }}
     >
       <div style={{
@@ -130,7 +132,6 @@ function ServiceCard({ icon, title, description, price }: {
       <style>{`
         .service-card-hover:hover {
           border-color: rgba(0,229,195,0.3) !important;
-          transform: translateY(-4px);
         }
       `}</style>
     </div>

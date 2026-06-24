@@ -197,6 +197,57 @@ h1, h2, h3, h4, .display {
   color: var(--amber);
 }
 
+/* Card motion */
+.motion-card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transform: translateZ(0);
+  transition:
+    transform 240ms ease,
+    border-color 240ms ease,
+    box-shadow 240ms ease,
+    background-color 240ms ease;
+  animation: fadeUp 0.7s ease both;
+  will-change: transform;
+}
+
+.motion-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 35%, transparent 65%, rgba(0, 229, 195, 0.08));
+  opacity: 0;
+  transform: translateY(12%);
+  transition: opacity 240ms ease, transform 240ms ease;
+  pointer-events: none;
+}
+
+.motion-card:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+  border-color: var(--border2) !important;
+}
+
+.motion-card:hover::before {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.motion-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.motion-card-media {
+  transition: transform 420ms ease;
+  transform-origin: center center;
+}
+
+.motion-card:hover .motion-card-media {
+  transform: scale(1.06);
+}
+
 /* @import "tailwindcss";
 
 :root {

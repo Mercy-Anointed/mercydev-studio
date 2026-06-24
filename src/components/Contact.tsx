@@ -11,7 +11,7 @@ const services = [
   'Fullstack Web App',
   'UI/UX Design',
   'Brand Design',
-  'AI Automation',
+  'Graphic Design',
   'Landing Page',
   'Not sure yet',
 ]
@@ -106,7 +106,7 @@ export default function Contact() {
               {[
                 {
                   icon: 'mail',
-                  label: 'Send an Email',
+                  label: 'Email Me',
                   sub: EMAIL,
                   href: `mailto:${EMAIL}`,
                   amber: false,
@@ -120,7 +120,7 @@ export default function Contact() {
                 },
                 {
                   icon: 'calendar',
-                  label: 'Book a Free Call',
+                  label: 'Book a Call',
                   sub: '30 min strategy session',
                   href: 'https://calendly.com/osagiedemercy6',
                   amber: false,

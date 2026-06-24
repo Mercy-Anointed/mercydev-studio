@@ -91,7 +91,7 @@ export default function Hero() {
             style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}
           >
             <a href="#portfolio" className="btn-primary">See My Work</a>
-            <a href="#contact" className="btn-secondary">Hire Me</a>
+            <a href="#contact" className="btn-secondary">Email Me</a>
             <a href="https://wa.me/2349074399728" className="btn-ghost">WhatsApp</a>
           </div>
         </div>

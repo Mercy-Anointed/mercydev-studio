@@ -4,12 +4,23 @@ import { db } from '@/lib/db'
 export const dynamic = 'force-dynamic'
 
 async function getStats() {
-  const [projects, messages, contacts] = await Promise.all([
-    db.project.count(),
-    db.message.count({ where: { seen: false } }),
-    db.contactRequest.count({ where: { status: 'UNREAD' } }),
+  const safeCount = async <T,>(query: Promise<T>, fallback: number) => {
+    try {
+      return await query
+    } catch (error) {
+      console.warn('Could not load admin stat yet', error)
+      return fallback
+    }
+  }
+
+  const [projects, messages, contacts, testimonials] = await Promise.all([
+    safeCount(db.project.count(), 0),
+    safeCount(db.message.count({ where: { seen: false } }), 0),
+    safeCount(db.contactRequest.count({ where: { status: 'UNREAD' } }), 0),
+    safeCount(db.testimonial.count(), 0),
   ])
-  return { projects, messages, contacts }
+
+  return { projects, messages, contacts, testimonials }
 }
 
 export default async function AdminDashboard() {
@@ -93,11 +104,12 @@ export default async function AdminDashboard() {
           </p>
 
           {/* Stats cards */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem', marginBottom: '2.5rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '1.5rem', marginBottom: '2.5rem' }}>
             {[
               { label: 'Total Projects', value: stats.projects, icon: '◈', color: 'var(--teal)', sub: 'In your portfolio' },
               { label: 'Unread Messages', value: stats.messages, icon: '◉', color: 'var(--amber)', sub: 'Needs your reply' },
               { label: 'New Inquiries', value: stats.contacts, icon: '◎', color: '#82aaff', sub: 'Contact form submissions' },
+              { label: 'Testimonials', value: stats.testimonials, icon: '✦', color: 'var(--teal)', sub: 'Published or pending' },
             ].map(stat => (
               <div key={stat.label} style={{
                 background: 'var(--surface)',
@@ -121,12 +133,13 @@ export default async function AdminDashboard() {
           <h2 style={{ fontFamily: 'Syne, sans-serif', fontSize: '1rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--text2)' }}>
             Quick Actions
           </h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1rem' }}>
             {[
               { href: '/admin/projects/new', label: 'Add New Project', icon: '＋', desc: 'Upload a new project to your portfolio', color: 'var(--teal)' },
               { href: '/admin/messages', label: 'View Messages', icon: '◉', desc: 'Read and reply to visitor messages', color: 'var(--amber)' },
               { href: '/admin/contacts', label: 'View Inquiries', icon: '◎', desc: 'See all contact form submissions', color: '#82aaff' },
               { href: '/admin/projects', label: 'Manage Projects', icon: '◈', desc: 'Edit or delete existing projects', color: 'var(--teal)' },
+              { href: '/admin/testimonials', label: 'Manage Testimonials', icon: '✦', desc: 'Edit, publish, or remove reviews', color: 'var(--amber)' },
             ].map(action => (
               <Link key={action.href} href={action.href} style={{
                 display: 'flex',
