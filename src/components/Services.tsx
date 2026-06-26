@@ -1,3 +1,5 @@
+import ScrollRevealCards from './ScrollRevealCards'
+
 // ✏️ Edit this array to update your services
 const services = [
   {
@@ -59,19 +61,21 @@ export default function Services() {
           Whether you need a landing page or a full-blown platform, I&apos;ve got you covered end-to-end.
         </p>
 
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '1.5rem',
-            marginTop: '3.5rem',
-          }}
-          className="services-grid"
-        >
-          {services.map((service, index) => (
-            <ServiceCard key={service.title} index={index} {...service} />
-          ))}
-        </div>
+        <ScrollRevealCards>
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(3, 1fr)',
+              gap: '1.5rem',
+              marginTop: '3.5rem',
+            }}
+            className="services-grid"
+          >
+            {services.map((service, index) => (
+              <ServiceCard key={service.title} index={index} {...service} />
+            ))}
+          </div>
+        </ScrollRevealCards>
       </div>
 
       <style>{`
@@ -95,7 +99,8 @@ function ServiceCard({ index, icon, title, description, price }: {
 }) {
   return (
     <div
-      className="service-card-hover motion-card"
+      className="service-card-hover motion-card scroll-card"
+      data-reveal-card
       style={{
         background: 'var(--surface)',
         border: '1px solid var(--border)',

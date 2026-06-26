@@ -1,5 +1,6 @@
 import { db } from '@/lib/db'
 import TestimonialSubmissionForm from './TestimonialSubmissionForm'
+import ScrollRevealCards from './ScrollRevealCards'
 
 function getInitials(name: string) {
   return name
@@ -96,70 +97,73 @@ export default async function Testimonials() {
             No testimonials have been published yet. Use the form below to add the first one.
           </div>
         ) : (
-          <div
-            className="testi-grid"
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(2, 1fr)',
-              gap: '1.5rem',
-              marginTop: '2.5rem',
-            }}
-          >
-            {testimonials.map((testimonial, index) => (
-              <article
-                key={testimonial.id}
-                className="motion-card"
-                style={{
-                  background: 'var(--surface)',
-                  border: '1px solid var(--border)',
-                  borderRadius: '16px',
-                  padding: '1.8rem',
-                  animationDelay: `${index * 80}ms`,
-                }}
-              >
-                <div style={{ color: 'var(--amber)', fontSize: '0.78rem', letterSpacing: '2px', marginBottom: '0.8rem', display: 'flex', gap: '0.08rem' }}>
-                  {renderStars(testimonial.rating)}
-                </div>
+          <ScrollRevealCards>
+            <div
+              className="testi-grid"
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(2, 1fr)',
+                gap: '1.5rem',
+                marginTop: '2.5rem',
+              }}
+            >
+              {testimonials.map((testimonial, index) => (
+                <article
+                  key={testimonial.id}
+                  className="motion-card scroll-card"
+                  data-reveal-card
+                  style={{
+                    background: 'var(--surface)',
+                    border: '1px solid var(--border)',
+                    borderRadius: '16px',
+                    padding: '1.8rem',
+                    animationDelay: `${index * 80}ms`,
+                  }}
+                >
+                  <div style={{ color: 'var(--amber)', fontSize: '0.78rem', letterSpacing: '2px', marginBottom: '0.8rem', display: 'flex', gap: '0.08rem' }}>
+                    {renderStars(testimonial.rating)}
+                  </div>
 
-                <p style={{
-                  color: 'var(--text2)',
-                  fontSize: '0.95rem',
-                  fontWeight: 400,
-                  lineHeight: 1.75,
-                  fontStyle: 'italic',
-                  marginBottom: '1.3rem',
-                }}>
-                  “{testimonial.content}”
-                </p>
-
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
-                  <div style={{
-                    width: '42px',
-                    height: '42px',
-                    borderRadius: '50%',
-                    background: 'var(--teal-dim)',
-                    border: '1px solid rgba(0,229,195,0.2)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontFamily: 'Space Grotesk, sans-serif',
-                    fontSize: '0.9rem',
-                    fontWeight: 700,
-                    color: 'var(--teal)',
-                    flexShrink: 0,
+                  <p style={{
+                    color: 'var(--text2)',
+                    fontSize: '0.95rem',
+                    fontWeight: 400,
+                    lineHeight: 1.75,
+                    fontStyle: 'italic',
+                    marginBottom: '1.3rem',
                   }}>
-                    {getInitials(testimonial.name)}
-                  </div>
-                  <div>
-                    <div style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '0.95rem', fontWeight: 700, letterSpacing: '-0.02em' }}>
-                      {testimonial.name}
+                    &quot;{testimonial.content}&quot;
+                  </p>
+
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+                    <div style={{
+                      width: '42px',
+                      height: '42px',
+                      borderRadius: '50%',
+                      background: 'var(--teal-dim)',
+                      border: '1px solid rgba(0,229,195,0.2)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontFamily: 'Space Grotesk, sans-serif',
+                      fontSize: '0.9rem',
+                      fontWeight: 700,
+                      color: 'var(--teal)',
+                      flexShrink: 0,
+                    }}>
+                      {getInitials(testimonial.name)}
                     </div>
-                    <div style={{ fontSize: '0.78rem', color: 'var(--text3)' }}>{testimonial.role}</div>
+                    <div>
+                      <div style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '0.95rem', fontWeight: 700, letterSpacing: '-0.02em' }}>
+                        {testimonial.name}
+                      </div>
+                      <div style={{ fontSize: '0.78rem', color: 'var(--text3)' }}>{testimonial.role}</div>
+                    </div>
                   </div>
-                </div>
-              </article>
-            ))}
-          </div>
+                </article>
+              ))}
+            </div>
+          </ScrollRevealCards>
         )}
 
         <div style={{ marginTop: '2.5rem' }}>

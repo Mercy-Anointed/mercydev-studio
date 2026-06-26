@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import WhatsAppIcon from './WhatsAppIcon'
+import ScrollRevealCards from './ScrollRevealCards'
 
 const WHATSAPP_NUMBER = '2349074399728'
 const EMAIL = 'osagiedemercy6@gmail.com'
@@ -102,78 +103,82 @@ export default function Contact() {
               Got a project in mind? Fill the form or reach out directly. I respond to every message personally.
             </p>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              {[
-                {
-                  icon: 'mail',
-                  label: 'Email Me',
-                  sub: EMAIL,
-                  href: `mailto:${EMAIL}`,
-                  amber: false,
-                },
-                {
-                  icon: 'whatsapp',
-                  label: 'WhatsApp Me',
-                  sub: 'Usually replies within 1 hour',
-                  href: `https://wa.me/${WHATSAPP_NUMBER}`,
-                  amber: true,
-                },
-                {
-                  icon: 'calendar',
-                  label: 'Book a Call',
-                  sub: '30 min strategy session',
-                  href: 'https://calendly.com/osagiedemercy6',
-                  amber: false,
-                },
-              ].map((method) => (
-                <a
-                  key={method.label}
-                  href={method.href}
-                  className="contact-method-hover"
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '1rem',
-                    padding: '1rem 1.2rem',
-                    background: 'var(--surface)',
-                    border: '1px solid var(--border)',
-                    borderRadius: '12px',
-                    textDecoration: 'none',
-                    color: 'var(--text)',
-                    transition: 'all 0.2s',
-                  }}
-                >
-                  <div
+            <ScrollRevealCards>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                {[
+                  {
+                    icon: 'mail',
+                    label: 'Email Me',
+                    sub: EMAIL,
+                    href: `mailto:${EMAIL}`,
+                    amber: false,
+                  },
+                  {
+                    icon: 'whatsapp',
+                    label: 'WhatsApp Me',
+                    sub: 'Usually replies within 1 hour',
+                    href: `https://wa.me/${WHATSAPP_NUMBER}`,
+                    amber: true,
+                  },
+                  {
+                    icon: 'calendar',
+                    label: 'Book a Call',
+                    sub: '30 min strategy session',
+                    href: 'https://calendly.com/osagiedemercy6',
+                    amber: false,
+                  },
+                ].map((method, index) => (
+                  <a
+                    key={method.label}
+                    href={method.href}
+                    className="contact-method-hover scroll-card"
+                    data-reveal-card
                     style={{
-                      width: '40px',
-                      height: '40px',
-                      borderRadius: '10px',
-                      background: method.amber ? 'rgba(255,179,71,0.08)' : 'var(--teal-dim)',
-                      border: `1px solid ${method.amber ? 'rgba(255,179,71,0.15)' : 'rgba(0,229,195,0.15)'}`,
                       display: 'flex',
                       alignItems: 'center',
-                      justifyContent: 'center',
-                      color: method.amber ? 'var(--amber)' : 'var(--teal)',
-                      flexShrink: 0,
+                      gap: '1rem',
+                      padding: '1rem 1.2rem',
+                      background: 'var(--surface)',
+                      border: '1px solid var(--border)',
+                      borderRadius: '12px',
+                      textDecoration: 'none',
+                      color: 'var(--text)',
+                      transition: 'all 0.2s',
+                      animationDelay: `${index * 90}ms`,
                     }}
                   >
-                    {method.icon === 'whatsapp' ? (
-                      <WhatsAppIcon size={18} />
-                    ) : method.icon === 'mail' ? (
-                      <MailIcon />
-                    ) : (
-                      <CalendarIcon />
-                    )}
-                  </div>
-                  <div>
-                    <div style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '0.92rem', fontWeight: 700, letterSpacing: '-0.02em' }}>
-                      {method.label}
+                    <div
+                      style={{
+                        width: '40px',
+                        height: '40px',
+                        borderRadius: '10px',
+                        background: method.amber ? 'rgba(255,179,71,0.08)' : 'var(--teal-dim)',
+                        border: `1px solid ${method.amber ? 'rgba(255,179,71,0.15)' : 'rgba(0,229,195,0.15)'}`,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: method.amber ? 'var(--amber)' : 'var(--teal)',
+                        flexShrink: 0,
+                      }}
+                    >
+                      {method.icon === 'whatsapp' ? (
+                        <WhatsAppIcon size={18} />
+                      ) : method.icon === 'mail' ? (
+                        <MailIcon />
+                      ) : (
+                        <CalendarIcon />
+                      )}
                     </div>
-                    <div style={{ fontSize: '0.82rem', color: 'var(--text3)', lineHeight: 1.5 }}>{method.sub}</div>
-                  </div>
-                </a>
-              ))}
-            </div>
+                    <div>
+                      <div style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '0.92rem', fontWeight: 700, letterSpacing: '-0.02em' }}>
+                        {method.label}
+                      </div>
+                      <div style={{ fontSize: '0.82rem', color: 'var(--text3)', lineHeight: 1.5 }}>{method.sub}</div>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </ScrollRevealCards>
           </div>
 
           <form

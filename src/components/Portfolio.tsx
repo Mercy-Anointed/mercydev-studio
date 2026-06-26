@@ -1,4 +1,5 @@
 import { db } from '@/lib/db'
+import ScrollRevealCards from './ScrollRevealCards'
 
 export default async function Portfolio() {
   let projects: Awaited<ReturnType<typeof db.project.findMany>> = []
@@ -54,29 +55,31 @@ export default async function Portfolio() {
             Projects added in the admin dashboard will appear here once they are published.
           </div>
         ) : (
-          <div
-            className="portfolio-grid"
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(3, 1fr)',
-              gap: '1.5rem',
-              marginTop: '3.5rem',
-            }}
-          >
-            {projects.map((project, index) => (
-              <ProjectCard
-                key={project.id}
-                index={index}
-                title={project.title}
-                description={project.description}
-                tech={project.techStack}
-                imageUrl={project.imageUrl}
-                liveUrl={project.liveUrl}
-                githubUrl={project.githubUrl}
-                featured={project.featured}
-              />
-            ))}
-          </div>
+          <ScrollRevealCards>
+            <div
+              className="portfolio-grid"
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(3, 1fr)',
+                gap: '1.5rem',
+                marginTop: '3.5rem',
+              }}
+            >
+              {projects.map((project, index) => (
+                <ProjectCard
+                  key={project.id}
+                  index={index}
+                  title={project.title}
+                  description={project.description}
+                  tech={project.techStack}
+                  imageUrl={project.imageUrl}
+                  liveUrl={project.liveUrl}
+                  githubUrl={project.githubUrl}
+                  featured={project.featured}
+                />
+              ))}
+            </div>
+          </ScrollRevealCards>
         )}
 
         <div style={{ textAlign: 'center', marginTop: '2.5rem' }}>
@@ -108,7 +111,8 @@ function ProjectCard({ index, title, description, tech, imageUrl, liveUrl, githu
 }) {
   return (
     <article
-      className="project-card-hover motion-card"
+      className="project-card-hover motion-card scroll-card"
+      data-reveal-card
       style={{
         background: 'var(--surface)',
         border: '1px solid var(--border)',
