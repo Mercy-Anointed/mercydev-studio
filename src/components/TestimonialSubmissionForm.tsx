@@ -124,8 +124,7 @@ export default function TestimonialSubmissionForm() {
         <label style={labelStyle}>Your Rating</label>
         <div
           style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(5, minmax(0, 1fr))',
+            display: 'flex',
             gap: '0.65rem',
           }}
           className="testimonial-rating-row"
@@ -152,7 +151,8 @@ export default function TestimonialSubmissionForm() {
                 alignItems: 'center',
                 justifyContent: 'center',
                 gap: '0.35rem',
-                width: '100%',
+                flex: '1 1 0',
+                minWidth: 0,
                 boxSizing: 'border-box',
               }}
             >
@@ -221,10 +221,16 @@ export default function TestimonialSubmissionForm() {
         }
         @media (max-width: 720px) {
           .testimonial-form-row { grid-template-columns: 1fr !important; }
-          .testimonial-rating-row { gap: 0.5rem !important; }
+          .testimonial-rating-row { gap: 0.5rem !important; flex-wrap: wrap !important; }
           .testimonial-rating-row button {
             min-height: 4.1rem !important;
             padding: 0.7rem 0.45rem !important;
+            flex: 1 1 calc(33% - 0.5rem) !important;
+            min-width: 0 !important;
+          }
+          .testimonial-rating-row button span:last-child {
+            word-break: break-word !important;
+            hyphens: auto !important;
           }
         }
       `}</style>
